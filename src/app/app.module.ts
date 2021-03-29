@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [ AppComponent ],
-  imports: [ BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule ],
+  imports: [ BrowserModule.withServerTransition({ appId: 'serverApp' }), AppRoutingModule, HttpClientModule, BrowserAnimationsModule ],
   providers: [],
   bootstrap: [ AppComponent ]
 })

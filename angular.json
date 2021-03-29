@@ -27,7 +27,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/my-noodle-app",
+            "outputPath": "dist/my-noodle-app/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -99,7 +99,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [ "tsconfig.app.json", "tsconfig.spec.json", "e2e/tsconfig.json" ],
+            "tsConfig": ["tsconfig.app.json","tsconfig.spec.json","e2e/tsconfig.json","tsconfig.server.json"],
             "exclude": [ "**/node_modules/**" ]
           }
         },
@@ -113,6 +113,53 @@
             "production": {
               "devServerTarget": "my-noodle-app:serve:production"
             }
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/my-noodle-app/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "my-noodle-app:build",
+            "serverTarget": "my-noodle-app:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "my-noodle-app:build:production",
+              "serverTarget": "my-noodle-app:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "my-noodle-app:build:production",
+            "serverTarget": "my-noodle-app:server:production",
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }

@@ -1,0 +1,46 @@
+<main class="details-wrapper">
+  <section class="header-container">
+    <span clas="go-back mat-small" (click)="goBack()">&lsaquo; Go Back</span>
+
+    <span class="mat-title page-heading">
+      {{restaurant?.Brand}}
+    </span>
+  </section>
+
+  <section class="content">
+    <section class="restaurant-details">
+      <mat-list role="list">
+        <mat-list-item role="listitem">
+          <span class="mat-body">Variety: </span>
+          <span class="mat-body-strong card-listitem-value">{{ restaurant?.Variety }}</span>
+        </mat-list-item>
+
+        <mat-list-item role="listitem">
+          <span class="mat-body">Style: </span>
+          <span class="mat-body-strong card-listitem-value">{{ restaurant?.Style }}</span>
+        </mat-list-item>
+
+        <mat-list-item role="listitem">
+          <span class="mat-body">Country: </span>
+          <span class="mat-body-strong card-listitem-value">{{ restaurant?.Country }}</span>
+        </mat-list-item>
+
+        <mat-list-item role="listitem">
+          <span class="mat-body">Top Ten: </span>
+          <span class="mat-body-strong card-listitem-value">{{ restaurant['Top Ten'] }}</span>
+        </mat-list-item>
+
+        <mat-list-item role="listitem">
+          <span class="mat-body">Star Rating: </span>
+          <span class="mat-body-strong card-listitem-value">{{ restaurant?.Stars }}</span>
+        </mat-list-item>
+      </mat-list>
+    </section>
+
+    <section class="restaurant-image-container">
+      <figure>
+        <img [src]="restaurant?.imageUrl" alt="Restaurant Image" class="restaurant-image">
+      </figure>
+    </section>
+  </section>
+</main>

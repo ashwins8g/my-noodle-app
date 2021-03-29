@@ -6,6 +6,7 @@ import { NotFoundComponent } from './not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'dashboard', redirectTo: 'home' },
   { path: 'home', loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule) },
   { path: '**', component: NotFoundComponent }
 ];

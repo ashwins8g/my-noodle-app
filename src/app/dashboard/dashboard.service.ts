@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-import { of } from 'rxjs';
-import { shareReplay, catchError } from 'rxjs/operators';
+import { Restaurant } from './models';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { shareReplay, share, catchError } from 'rxjs/operators';
 
 const fetchRandomImagesUrl = 'https://s3-ap-southeast-1.amazonaws.com/he-public-data/noodlesec253ad.json';
 const fetchRestaurantDetailsUrl = 'https://s3-ap-southeast-1.amazonaws.com/he-public-data/TopRamen8d30951.json';
@@ -12,6 +12,9 @@ const fetchRestaurantDetailsUrl = 'https://s3-ap-southeast-1.amazonaws.com/he-pu
   providedIn: 'root'
 })
 export class DashboardService {
+  private readonly _selectedRestaurant = new BehaviorSubject<Restaurant>({});
+  readonly selectedRestaurant$ = this._selectedRestaurant.asObservable().pipe(share());
+
   constructor(private http: HttpClient) {}
 
   processData(ajax$: Observable<any>): Observable<any> {
@@ -26,6 +29,10 @@ export class DashboardService {
   showErrorDialog(errorResponse: any) {
     errorResponse = typeof errorResponse === 'string' ? errorResponse : 'Something Went Wrong!';
     alert(errorResponse);
+  }
+
+  changeSelectedRestaurant(newValue: Restaurant) {
+    this._selectedRestaurant.next(newValue);
   }
 
   getRandomImages(): Observable<any> {

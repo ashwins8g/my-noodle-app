@@ -1,0 +1,52 @@
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 1.5rem 0 0.5rem;
+  text-align: center;
+  background-color: #efefef;
+
+  .go-back {
+    justify-self: flex-start;
+    flex: 0 0 0;
+    cursor: pointer;
+  }
+
+  .page-heading {
+    flex: 1 1 0;
+    margin: 0 auto;
+  }
+}
+
+.content {
+  flex: 1 1 0;
+  background: linear-gradient(150deg, rgba(119, 201, 212, 1) 0%, rgba(87, 188, 144, 1) 100%);
+  color: #192231;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+
+  .restaurant-image-container {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 1rem;
+
+    .restaurant-image {
+      width: 100%;
+      max-width: 16rem;
+      text-align: center;
+      aspect-ratio: 2 / 1;
+    }
+  }
+
+  .restaurant-details {
+    text-align: center;
+  }
+
+  .card-listitem-value {
+    margin-left: 0.5rem;
+  }
+}

@@ -11,6 +11,7 @@ import { RestaurantCardComponent } from './restaurant-card/restaurant-card.compo
 
 // services
 import { DashboardService } from './dashboard.service';
+import { RestaurantDetailsComponent } from './restaurant-details/restaurant-details.component';
 
 const components = [ DashboardComponent, RestaurantCardComponent ];
 
@@ -19,7 +20,7 @@ const modules = [ CommonModule, DashboardRoutingModule, MaterialModule ];
 const services = [ DashboardService ];
 
 @NgModule({
-  declarations: [ ...components ],
+  declarations: [ ...components, RestaurantDetailsComponent ],
   imports: [ ...modules ],
   providers: [ ...services ]
 })

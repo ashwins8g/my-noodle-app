@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         if (res && Array.isArray(res) && res.length) {
           for (const [ index, item ] of res.entries()) {
             if (item && Object.keys(item).length && item.constructor === Object) {
-              item.id = index;
+              item.id = index + 1;
               item.imageUrl = this.listOfRandomImages[Math.floor(Math.random() * this.listOfRandomImages.length)];
             }
           }

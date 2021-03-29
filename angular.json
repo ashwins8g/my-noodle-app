@@ -7,7 +7,17 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "sass"
+          "style": "sass",
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         }
       },
       "root": "",
@@ -23,14 +33,8 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.sass"
-            ],
+            "assets": [ "src/favicon.ico", "src/assets" ],
+            "styles": [ "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css", "src/styles.sass" ],
             "scripts": []
           },
           "configurations": {
@@ -87,28 +91,16 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.sass"
-            ],
+            "assets": [ "src/favicon.ico", "src/assets" ],
+            "styles": [ "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css", "src/styles.sass" ],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": [ "tsconfig.app.json", "tsconfig.spec.json", "e2e/tsconfig.json" ],
+            "exclude": [ "**/node_modules/**" ]
           }
         },
         "e2e": {
@@ -124,6 +116,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "my-noodle-app"
 }

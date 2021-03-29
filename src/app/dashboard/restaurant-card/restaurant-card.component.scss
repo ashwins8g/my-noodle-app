@@ -1,0 +1,25 @@
+.restaurant-card {
+  background: linear-gradient(150deg, rgba(119, 201, 212, 1) 0%, rgba(87, 188, 144, 1) 100%);
+  border-radius: 0.75rem;
+  color: #192231;
+
+  img.restaurant-header-image {
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 100%;
+  }
+
+  .card-listitem-value {
+    margin-left: 0.5rem;
+  }
+
+  .restaurant-card-action-buttons-container {
+    text-align: right;
+    margin: 0 auto;
+
+    .mat-flat-button.mat-primary {
+      background-color: #015249;
+      color: #f5f5f5;
+    }
+  }
+}

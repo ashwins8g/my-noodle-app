@@ -1,0 +1,39 @@
+<mat-card class="restaurant-card">
+  <mat-card-header>
+    <div mat-card-avatar>
+      <img mat-card-image [src]="restaurant?.imageUrl" alt="Restaurant Image" class="restaurant-header-image">
+    </div>
+    <mat-card-title>{{ restaurant?.Brand }}</mat-card-title>
+    <mat-card-subtitle>{{ restaurant?.Stars }} star</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <span class="mat-body">Variety: </span>
+        <span class="mat-body-strong card-listitem-value">{{ restaurant?.Variety }}</span>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <span class="mat-body">Style: </span>
+        <span class="mat-body-strong card-listitem-value">{{ restaurant?.Style }}</span>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <span class="mat-body">Country: </span>
+        <span class="mat-body-strong card-listitem-value">{{ restaurant?.Country }}</span>
+      </mat-list-item>
+
+      <mat-list-item role="listitem">
+        <span class="mat-body">Top Ten: </span>
+        <span class="mat-body-strong card-listitem-value">{{ restaurant['Top Ten'] }}</span>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+
+  <mat-card-actions class="restaurant-card-action-buttons-container">
+    <button type="button" mat-flat-button color="primary" (click)="redirectToRestaurantDetailsPage()">
+      View More
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
-import { DashboardService } from './../dashboard.service';
-import { Restaurant } from './../models';
+import { DashboardService } from '../dashboard/dashboard.service';
+import { Restaurant } from '../dashboard/models';
 
 @Component({
   selector: 'app-restaurant-details',

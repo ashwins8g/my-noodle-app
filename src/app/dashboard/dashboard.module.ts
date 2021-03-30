@@ -11,7 +11,7 @@ import { RestaurantCardComponent } from './restaurant-card/restaurant-card.compo
 
 // services
 import { DashboardService } from './dashboard.service';
-import { RestaurantDetailsComponent } from './restaurant-details/restaurant-details.component';
+import { RestaurantDetailsComponent } from '../restaurant-details/restaurant-details.component';
 
 const components = [ DashboardComponent, RestaurantCardComponent ];
 

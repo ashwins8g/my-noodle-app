@@ -36,10 +36,12 @@ export class DashboardService {
   }
 
   getRandomImages(): Observable<any> {
-    return this.processData(this.http.get(fetchRandomImagesUrl).pipe(shareReplay(1)));
+    return this.processData(this.http.get(fetchRandomImagesUrl).pipe(shareReplay({ bufferSize: 1, refCount: true })));
   }
 
   getListOfRestaurants(): Observable<any> {
-    return this.processData(this.http.get(fetchRestaurantDetailsUrl).pipe(shareReplay(1)));
+    return this.processData(
+      this.http.get(fetchRestaurantDetailsUrl).pipe(shareReplay({ bufferSize: 1, refCount: true }))
+    );
   }
 }

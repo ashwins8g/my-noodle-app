@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
 
 // components
 import { NotFoundComponent } from './not-found.component';
@@ -12,7 +13,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy', initialNavigation: 'enabled' }) ],
+  imports: [
+    QuicklinkModule,
+    RouterModule.forRoot(routes, {
+      relativeLinkResolution: 'legacy',
+      initialNavigation: 'enabled',
+      preloadingStrategy: QuicklinkStrategy
+    })
+  ],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {}

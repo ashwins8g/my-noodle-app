@@ -1,7 +1,7 @@
 <main>
   <section class="mat-headline app-heading">Noodles Finder</section>
 
-  <section class="app-data-container-grid" *ngIf="listOfRestaurants.length; else loading">
+  <section class="app-data-container-grid" *ngIf="listOfRestaurants.size; else loading">
     <section *ngFor="let restaurant of listOfRestaurants; index as i; trackBy:restaurant?.id" class="app-card-item">
       <app-restaurant-card [restaurant]="restaurant"></app-restaurant-card>
     </section>

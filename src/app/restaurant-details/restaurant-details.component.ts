@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
@@ -8,7 +8,8 @@ import { Restaurant } from '../dashboard/models';
 @Component({
   selector: 'app-restaurant-details',
   templateUrl: './restaurant-details.component.html',
-  styleUrls: [ './restaurant-details.component.scss' ]
+  styleUrls: [ './restaurant-details.component.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RestaurantDetailsComponent implements OnInit, OnDestroy {
   restaurant: Restaurant = {};

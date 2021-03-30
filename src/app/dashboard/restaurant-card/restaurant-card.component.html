@@ -4,7 +4,9 @@
       <img mat-card-image [src]="restaurant?.imageUrl" alt="Restaurant Image" class="restaurant-header-image">
     </div>
     <mat-card-title>{{ restaurant?.Brand }}</mat-card-title>
-    <mat-card-subtitle>{{ restaurant?.Stars }} star</mat-card-subtitle>
+    <mat-card-subtitle>
+      {{ restaurant?.Stars }} <img class="star-image" src="/assets/images/star-icon.svg" alt="star">
+    </mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>

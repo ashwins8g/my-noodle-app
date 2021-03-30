@@ -1,13 +1,19 @@
-<main class="details-wrapper">
+<main class="restaurant-details-wrapper">
   <section class="header-container">
-    <span clas="go-back mat-small" (click)="goBack()">&lsaquo; Go Back</span>
+    <a clas="go-back" mat-icon-button (click)="goBack()">&lsaquo; Go Back</a>
 
-    <span class="mat-title page-heading">
-      {{restaurant?.Brand}}
-    </span>
+    <section class="heading-wrapper">
+      <span class="mat-title page-heading">
+        {{restaurant?.Brand}}
+      </span>
+
+      <span class="ratings-container">
+        {{ restaurant?.Stars }} <img class="star-image" src="/assets/images/star-icon.svg" alt="star">
+      </span>
+    </section>
   </section>
 
-  <section class="content">
+  <section class="content-container">
     <section class="restaurant-details">
       <mat-list role="list">
         <mat-list-item role="listitem">

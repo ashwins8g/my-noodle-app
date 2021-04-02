@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Restaurant } from './models';
-import { BehaviorSubject, from, Observable, of } from 'rxjs';
-import { shareReplay, share, catchError } from 'rxjs/operators';
-import * as randomImagesList from './../image-list.db.json';
+import { Observable, of } from 'rxjs';
+import { shareReplay, catchError } from 'rxjs/operators';
+import * as randomImagesListObj from './../image-list.db.json';
 
 // const fetchRandomImagesUrl = 'https://s3-ap-southeast-1.amazonaws.com/he-public-data/noodlesec253ad.json';
 const fetchRestaurantDetailsUrl = 'https://s3-ap-southeast-1.amazonaws.com/he-public-data/TopRamen8d30951.json';
@@ -13,8 +12,7 @@ const fetchRestaurantDetailsUrl = 'https://s3-ap-southeast-1.amazonaws.com/he-pu
   providedIn: 'root'
 })
 export class DashboardService {
-  private readonly selectedRestaurant = new BehaviorSubject<Restaurant>({});
-  readonly selectedRestaurant$ = this.selectedRestaurant.asObservable().pipe(share());
+  private randomImagesList: any = randomImagesListObj;
 
   constructor(private http: HttpClient) {}
 
@@ -32,12 +30,12 @@ export class DashboardService {
     alert(errorResponse);
   }
 
-  changeSelectedRestaurant(newValue: Restaurant): void {
-    this.selectedRestaurant.next(newValue);
-  }
-
   getRandomImages(): Observable<any> {
-    return this.processData(from(randomImagesList).pipe(shareReplay({ bufferSize: 1, refCount: true })));
+    if (this.randomImagesList && this.randomImagesList.default) {
+      return of(this.randomImagesList.default).pipe(shareReplay({ bufferSize: 1, refCount: true }));
+    }
+
+    return of([]);
   }
 
   getListOfRestaurants(): Observable<any> {

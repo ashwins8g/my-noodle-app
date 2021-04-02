@@ -8,7 +8,7 @@
       </span>
 
       <span class="ratings-container">
-        {{ restaurant?.Stars }} <img class="star-image" src="/assets/images/star-icon.svg" alt="star">
+        {{ restaurant?.Stars }} <img class="star-image" [src]="starImageUrl" alt="star">
       </span>
     </section>
   </section>
@@ -45,7 +45,7 @@
 
     <section class="restaurant-image-container">
       <figure>
-        <img [src]="restaurant?.imageUrl" alt="Restaurant Image" class="restaurant-image">
+        <img attr.data-src={{ restaurant?.imageUrl }} alt="Restaurant Image" class="lazyload restaurant-image">
       </figure>
     </section>
   </section>

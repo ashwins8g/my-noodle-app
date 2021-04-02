@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { DashboardService } from '../dashboard/dashboard.service';
 import { Restaurant } from '../dashboard/models';
+import { starImage } from './../dashboard/constants.model';
 
 @Component({
   selector: 'app-restaurant-details',
@@ -12,6 +13,7 @@ import { Restaurant } from '../dashboard/models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RestaurantDetailsComponent implements OnInit, OnDestroy {
+  starImageUrl = starImage;
   restaurant: Restaurant = {};
   private subscriptions: Subscription = new Subscription();
 
@@ -25,12 +27,12 @@ export class RestaurantDetailsComponent implements OnInit, OnDestroy {
     );
   }
 
-  goBack() {
+  goBack(): void {
     this.dashboardService.changeSelectedRestaurant({});
     this.router.navigate([ '/home' ]);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
 }

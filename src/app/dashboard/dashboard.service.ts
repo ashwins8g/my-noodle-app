@@ -2,18 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Restaurant } from './models';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { shareReplay, share, catchError } from 'rxjs/operators';
+import * as randomImagesList from './../image-list.db.json';
 
-const fetchRandomImagesUrl = 'https://s3-ap-southeast-1.amazonaws.com/he-public-data/noodlesec253ad.json';
+// const fetchRandomImagesUrl = 'https://s3-ap-southeast-1.amazonaws.com/he-public-data/noodlesec253ad.json';
 const fetchRestaurantDetailsUrl = 'https://s3-ap-southeast-1.amazonaws.com/he-public-data/TopRamen8d30951.json';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardService {
-  private readonly _selectedRestaurant = new BehaviorSubject<Restaurant>({});
-  readonly selectedRestaurant$ = this._selectedRestaurant.asObservable().pipe(share());
+  private readonly selectedRestaurant = new BehaviorSubject<Restaurant>({});
+  readonly selectedRestaurant$ = this.selectedRestaurant.asObservable().pipe(share());
 
   constructor(private http: HttpClient) {}
 
@@ -26,17 +27,17 @@ export class DashboardService {
     );
   }
 
-  showErrorDialog(errorResponse: any) {
+  showErrorDialog(errorResponse: any): void {
     errorResponse = typeof errorResponse === 'string' ? errorResponse : 'Something Went Wrong!';
     alert(errorResponse);
   }
 
-  changeSelectedRestaurant(newValue: Restaurant) {
-    this._selectedRestaurant.next(newValue);
+  changeSelectedRestaurant(newValue: Restaurant): void {
+    this.selectedRestaurant.next(newValue);
   }
 
   getRandomImages(): Observable<any> {
-    return this.processData(this.http.get(fetchRandomImagesUrl).pipe(shareReplay({ bufferSize: 1, refCount: true })));
+    return this.processData(from(randomImagesList).pipe(shareReplay({ bufferSize: 1, refCount: true })));
   }
 
   getListOfRestaurants(): Observable<any> {

@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { DashboardService } from './../dashboard.service';
 import { Restaurant } from './../models';
+import { starImage } from './../constants.model';
 
 @Component({
   selector: 'app-restaurant-card',
@@ -10,6 +11,8 @@ import { Restaurant } from './../models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RestaurantCardComponent {
+  starImageUrl = starImage;
+
   @Input() restaurant: Restaurant = {};
 
   constructor(private router: Router, private dashboardService: DashboardService) {}

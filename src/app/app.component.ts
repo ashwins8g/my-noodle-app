@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router, RouterEvent } from '@angular/router';
 import { Subscription } from 'rxjs';
+import 'lazysizes';
 
 @Component({
   selector: 'app-root',

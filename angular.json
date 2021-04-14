@@ -33,16 +33,14 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": [ "src/favicon.ico", "src/assets" ],
+            "assets": [ "src/favicon.ico", "src/assets", "src/manifest.webmanifest" ],
             "styles": [
               "src/styles.scss",
               {
                 "input": "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-                "lazy": true,
                 "bundleName": "angular-material"
               }
             ],
-            "extractCss": true,
             "scripts": []
           },
           "configurations": {
@@ -71,7 +69,9 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json"
             }
           }
         },
@@ -99,7 +99,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [ "src/favicon.ico", "src/assets" ],
+            "assets": [ "src/favicon.ico", "src/assets", "src/manifest.webmanifest" ],
             "styles": [ "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css", "src/styles.scss" ],
             "scripts": []
           }
